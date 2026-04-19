@@ -31,7 +31,7 @@ class AstropyEngine(BaseEngine):
         if self['Omega_k'] == 0:
             name = 'Flat{}'.format(name)
         else:
-            kwargs['Ode0'] = 1 - (self['Omega_b'] + self['Omega_cdm'])  # this is a first guess for OdeO because neutrino treatment...
+            kwargs['Ode0'] = 1 - (self['Omega_b'] + self['Omega_cdm'])  # this is a first guess for Ode0 because neutrino treatment...
             self._astropy = getattr(astropy_cosmology, name)(**kwargs)
             # now adjust Ode0 based on Omega_k
             kwargs['Ode0'] = 1.0 - self._astropy.Om0 - self['Omega_k'] - self._astropy.Ogamma0 - self._astropy.Onu0
@@ -147,7 +147,9 @@ class Background(BaseBackground):
     def angular_diameter_distance_2(self, z1, z2):
         r"""
         Angular diameter distance of object at :math:`z_{2}` as seen by observer at :math:`z_{1}`,
-        that is, :math:`S_{K}((\chi(z_{2}) - \chi(z_{1})) \sqrt{|K|}) / \sqrt{|K|} / (1 + z_{2})`,
+        in :math:`\mathrm{Mpc}/h`.
+
+        That is, :math:`S_{K}((\chi(z_{2}) - \chi(z_{1})) \sqrt{|K|}) / \sqrt{|K|} / (1 + z_{2})`,
         where :math:`S_{K}` is the identity if :math:`K = 0`, :math:`\sin` if :math:`K < 0`
         and :math:`\sinh` if :math:`K > 0`.
         """
