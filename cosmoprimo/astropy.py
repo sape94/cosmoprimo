@@ -113,7 +113,7 @@ class Background(BaseBackground):
     @utils.flatarray()
     def comoving_radial_distance(self, z):
         r"""
-        Comoving radial distance, in :math:`mathrm{Mpc}/h`.
+        Comoving radial distance, in :math:`\mathrm{Mpc}/h`.
 
         See eq. 15 of `astro-ph/9905116 <https://arxiv.org/abs/astro-ph/9905116>`_ for :math:`D_C(z)`.
         """
