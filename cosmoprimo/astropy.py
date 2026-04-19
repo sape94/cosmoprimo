@@ -19,10 +19,10 @@ class AstropyEngine(BaseEngine):
         kwargs = {'H0': self['H0'], 'Om0': self['Omega_b'] + self['Omega_cdm'],
                   'Tcmb0': self['T_cmb'], 'Neff': N_eff, 'm_nu': units.Quantity(m_nu, units.eV), 'Ob0': self['Omega_b']}
         name = 'CDM'
-        if self['wa_fld'] != -1:
+        if self['wa_fld'] != 0:
             name = 'wa{}'.format(name)
             kwargs['wa'] = self['wa_fld']
-        if self['w0_fld'] != 0:
+        if self['w0_fld'] != -1:
             kwargs['w0'] = self['w0_fld']
             if self['wa_fld'] != -1:
                 name = 'w0{}'.format(name)  # w0wa model
