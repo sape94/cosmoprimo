@@ -56,7 +56,11 @@ class Background(BaseBackground):
 
     @property
     def age(self):
-        r"""The current age of the Universe, in :math:`\mathrm{Gy}`."""
+        r"""
+        The current age of the Universe, in :math:`\mathrm{Gy}`.
+
+        Equivalent to :math:time evaluated at :math:z = 0.
+        """
         return self.ba.age(0.).value
 
     @utils.flatarray()
@@ -105,7 +109,11 @@ class Background(BaseBackground):
 
     @utils.flatarray()
     def time(self, z):
-        r"""Proper time (age of universe), in :math:`\mathrm{Gy}`."""
+        r"""
+        Proper time (age of universe), in :math:`\mathrm{Gy}`.
+
+        See also :math:age for the current age at :math:z = 0.
+        """
         if z.size:  # required to avoid error in np.vectorize
             return self.ba.age(z).value
         return np.zeros_like(z)
